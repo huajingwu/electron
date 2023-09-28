@@ -1,0 +1,69 @@
+{
+  "name": "electron-demo",
+  "private": true,
+  "version": "0.0.1",
+  "description": "vite+vue+electron",
+  "author": "hua",
+  "main": "dist-electron/index.js",
+  "scripts": {
+    "start": "chcp 65001 && electron .",
+    "dev": "chcp 65001 && vite",
+    "build": "vite build && electron-builder",
+    "build:win": "vite build && electron-builder --win",
+    "build:mac": "vite build && electron-builder --mac",
+    "build:linux": "vite build && electron-builder --linux",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "cross-env": "^7.0.3",
+    "electron": "^26.2.2",
+    "electron-builder": "^24.6.4",
+    "electron-updater": "^6.1.4",
+    "vite": "^4.4.5",
+    "vite-plugin-electron": "^0.14.1"
+  },
+  "build": {
+    "appId": "com.my-website.my-app",
+    "productName": "MyApp",
+    "copyright": "Copyright © 2021 kuari",
+    "win": {
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ],
+      "icon": "electron/icons/aa.png"
+    },
+    "mac": {
+      "icon": "electron/icons/aa.png"
+    },
+    "linux": {
+      "icon": "electron/icons/aa.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "electron/preload/index.js"
+    ],
+    "directories": {
+      "output": "release/"
+    },
+    "publish": [
+      {
+        "provider": "gitee",
+        "gitee": {
+          "repository": "your-gitee-username/your-gitee-project"
+        }
+      }
+    ]
+  }
+}
